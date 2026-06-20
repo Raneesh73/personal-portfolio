@@ -55,11 +55,11 @@ export default function Avatar({ activeSection }) {
   // Dynamic layout coordinates based on section state (for desktop screen layouts)
   const getAvatarStyles = () => {
     if (isMobile) {
-      // Anchored to bottom right on mobile to avoid covering core copy content
+      // Anchored to bottom right on mobile via CSS, so we remove JS translation
       return {
-        x: 'calc(100vw - 110px)',
-        y: 'calc(100vh - 110px)',
-        scale: 0.75,
+        x: 0,
+        y: 0,
+        scale: 1,
         rotate: 0,
       };
     }
@@ -154,18 +154,17 @@ export default function Avatar({ activeSection }) {
             initial={{ opacity: 0, y: 15, scale: 0.8 }}
             animate={{ 
               opacity: 1, 
-              y: 0, 
               scale: 1,
               // Position coordinate helpers
               x: isMobile 
-                ? 'calc(100vw - 320px)' 
+                ? 0 
                 : getAvatarStyles().x === 'calc(50vw - 75px)' 
                   ? 'calc(50vw - 150px)' 
                   : parseFloat(getAvatarStyles().x) > window.innerWidth / 2 
                     ? `calc(${getAvatarStyles().x} - 230px)` 
                     : `calc(${getAvatarStyles().x} + 170px)`,
               y: isMobile 
-                ? 'calc(100vh - 180px)' 
+                ? 0 
                 : `calc(${getAvatarStyles().y} - 80px)`
             }}
             exit={{ opacity: 0, y: 10, scale: 0.9 }}
