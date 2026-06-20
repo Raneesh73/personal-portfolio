@@ -81,7 +81,7 @@ export default function Background() {
 
     const initParticles = () => {
       particles = [];
-      const count = Math.min(Math.floor((width * height) / 15000), 80);
+      const count = Math.min(Math.floor((width * height) / 9000), 120); // More particles!
       for (let i = 0; i < count; i++) {
         particles.push(new Particle());
       }
@@ -94,11 +94,11 @@ export default function Background() {
           const dy = particles[a].y - particles[b].y;
           const distance = Math.hypot(dx, dy);
 
-          if (distance < 100) {
+          if (distance < 130) {
             // Gradient connection line
-            const opacity = (100 - distance) / 100 * 0.12;
+            const opacity = (130 - distance) / 130 * 0.25; // Brighter lines
             ctx.strokeStyle = `rgba(0, 245, 255, ${opacity})`;
-            ctx.lineWidth = 0.5;
+            ctx.lineWidth = 1;
             ctx.beginPath();
             ctx.moveTo(particles[a].x, particles[a].y);
             ctx.lineTo(particles[b].x, particles[b].y);
@@ -133,6 +133,11 @@ export default function Background() {
 
   return (
     <div className="space-bg-container">
+      {/* Dynamic Glowing Orbs for extra premium depth */}
+      <div className="bg-orb orb-1"></div>
+      <div className="bg-orb orb-2"></div>
+      <div className="bg-orb orb-3"></div>
+      
       <div className="bg-glow bg-glow-1"></div>
       <div className="bg-glow bg-glow-2"></div>
       <div className="bg-glow bg-glow-3"></div>

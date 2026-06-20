@@ -52,16 +52,31 @@ export default function Avatar({ activeSection }) {
     }
   }, [activeSection]);
 
-  // Dynamic layout coordinates based on section state (for desktop screen layouts)
+  // Dynamic layout coordinates based on section state
   const getAvatarStyles = () => {
     if (isMobile) {
-      // Anchored to bottom right on mobile via CSS, so we remove JS translation
-      return {
-        x: 0,
-        y: 0,
-        scale: 1,
-        rotate: 0,
-      };
+      switch (activeSection) {
+        case 'hero':
+          return { x: 'calc(50vw - 45px)', y: '150px', scale: 1, rotate: 0 };
+        case 'about':
+          return { x: 'calc(85vw - 90px)', y: 'calc(80vh - 90px)', scale: 1, rotate: -5 };
+        case 'skills':
+          return { x: '20px', y: 'calc(25vh)', scale: 0.9, rotate: 5 };
+        case 'projects':
+          return { x: 'calc(90vw - 90px)', y: 'calc(15vh)', scale: 1, rotate: 10 };
+        case 'experience':
+          return { x: '20px', y: 'calc(75vh - 90px)', scale: 1.05, rotate: -8 };
+        case 'achievements':
+          return { x: 'calc(50vw - 45px)', y: 'calc(18vh)', scale: 1.1, rotate: 15 };
+        case 'certifications':
+          return { x: 'calc(85vw - 90px)', y: 'calc(45vh)', scale: 0.9, rotate: -5 };
+        case 'resume':
+          return { x: '20px', y: 'calc(45vh)', scale: 0.95, rotate: 0 };
+        case 'contact':
+          return { x: 'calc(50vw - 45px)', y: 'calc(15vh)', scale: 1.1, rotate: 0 };
+        default:
+          return { x: 'calc(50vw - 45px)', y: '150px', scale: 1, rotate: 0 };
+      }
     }
 
     switch (activeSection) {
@@ -156,15 +171,19 @@ export default function Avatar({ activeSection }) {
               opacity: 1, 
               scale: 1,
               // Position coordinate helpers
-              x: isMobile 
-                ? 0 
+              x: isMobile
+                ? getAvatarStyles().x.includes('50vw')
+                  ? 'calc(50vw - 100px)'
+                  : parseFloat(getAvatarStyles().x) > window.innerWidth / 2 || getAvatarStyles().x.includes('80vw') || getAvatarStyles().x.includes('85vw') || getAvatarStyles().x.includes('90vw')
+                    ? `calc(${getAvatarStyles().x} - 150px)`
+                    : `calc(${getAvatarStyles().x} + 80px)`
                 : getAvatarStyles().x === 'calc(50vw - 75px)' 
                   ? 'calc(50vw - 150px)' 
                   : parseFloat(getAvatarStyles().x) > window.innerWidth / 2 
                     ? `calc(${getAvatarStyles().x} - 230px)` 
                     : `calc(${getAvatarStyles().x} + 170px)`,
               y: isMobile 
-                ? 0 
+                ? `calc(${getAvatarStyles().y} - 85px)` 
                 : `calc(${getAvatarStyles().y} - 80px)`
             }}
             exit={{ opacity: 0, y: 10, scale: 0.9 }}
