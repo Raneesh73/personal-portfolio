@@ -1,0 +1,57 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
+
+:root {
+  /* Colors */
+  --bg-color: #050816;
+  --bg-darker: #02040b;
+  --bg-card: rgba(10, 16, 36, 0.4);
+  --bg-card-hover: rgba(16, 26, 56, 0.6);
+  
+  --primary-color: #00F5FF;      /* Cyberpunk Cyan */
+  --primary-glow: rgba(0, 245, 255, 0.3);
+  --primary-glow-subtle: rgba(0, 245, 255, 0.1);
+  
+  --accent-color: #00FF88;       /* Hologram Green */
+  --accent-glow: rgba(0, 255, 136, 0.3);
+  
+  --highlight-color: #FF6B35;    /* Hyper Orange */
+  --highlight-glow: rgba(255, 107, 53, 0.35);
+  
+  --text-primary: #FFFFFF;
+  --text-secondary: #A0AEC0;
+  --text-muted: #64748B;
+  
+  /* Gradients */
+  --gradient-primary: linear-gradient(135deg, var(--primary-color) 0%, var(--accent-color) 100%);
+  --gradient-highlight: linear-gradient(135deg, var(--highlight-color) 0%, #FF2E93 100%);
+  --gradient-dark: linear-gradient(180deg, var(--bg-color) 0%, var(--bg-darker) 100%);
+  --gradient-card: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.01) 100%);
+  
+  /* Glassmorphism */
+  --glass-bg: rgba(6, 11, 28, 0.65);
+  --glass-border: rgba(0, 245, 255, 0.12);
+  --glass-border-hover: rgba(0, 245, 255, 0.3);
+  --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5);
+  --backdrop-blur: blur(12px);
+  
+  /* Typography */
+  --font-header: 'Outfit', sans-serif;
+  --font-body: 'Plus Jakarta Sans', sans-serif;
+  
+  /* Transitions */
+  --transition-fast: 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --transition-medium: 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-slow: 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  
+  /* Spacing */
+  --section-padding: 6rem 2rem;
+  --border-radius-sm: 8px;
+  --border-radius-md: 16px;
+  --border-radius-lg: 24px;
+}
+
+@media (max-width: 768px) {
+  :root {
+    --section-padding: 4rem 1rem;
+  }
+}

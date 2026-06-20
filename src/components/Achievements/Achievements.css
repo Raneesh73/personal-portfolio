@@ -1,0 +1,80 @@
+.ach-glow-background {
+  position: absolute;
+  top: 40%;
+  left: 10%;
+  width: 380px;
+  height: 380px;
+  border-radius: 50%;
+  background: radial-gradient(circle, var(--accent-glow) 0%, transparent 70%);
+  filter: blur(130px);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.ach-header {
+  text-align: center;
+  margin-bottom: 4rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.ach-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 1.8rem;
+  z-index: 5;
+  position: relative;
+}
+
+.ach-card {
+  padding: 2.2rem 1.8rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: transform var(--transition-fast), border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.ach-card:hover {
+  transform: translateY(-8px);
+  border-color: var(--theme-color);
+  box-shadow: 0 10px 30px -5px rgba(0, 245, 255, 0.05);
+}
+
+.ach-card-icon {
+  font-size: 1.8rem;
+  margin-bottom: 1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ach-number {
+  font-family: var(--font-header);
+  font-size: 3.2rem;
+  font-weight: 800;
+  line-height: 1;
+  color: var(--text-primary);
+  margin-bottom: 0.4rem;
+  letter-spacing: -0.02em;
+}
+
+.ach-title {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 0.8rem;
+}
+
+.ach-desc {
+  font-size: 0.8rem;
+  line-height: 1.5;
+  color: var(--text-secondary);
+}
+
+@media (max-width: 576px) {
+  .ach-number {
+    font-size: 2.6rem;
+  }
+}
